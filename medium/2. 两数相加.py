@@ -19,28 +19,25 @@ class Solution:
     输出：7 -> 0 -> 8
     原因：342 + 465 = 807
     """
-
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         tmp_l1 = l1
         tmp_l2 = l2
-        int_l1 = ''
-        int_l2 = ''
+        int_l1 = tmp_l1.val
+        int_l2 = tmp_l2.val
         while tmp_l1.next:
-            int_l1 = str(tmp_l1.next) + int_l1
+            int_l1 = str(tmp_l1.next.val) + str(int_l1)
+            tmp_l1 = tmp_l1.next
         while tmp_l2.next:
-            int_l2 = str(tmp_l2.next) + int_l2
+            int_l2 = str(tmp_l2.next.val) + str(int_l2)
+            tmp_l2 = tmp_l2.next
         tmp_str = str(int(int_l1) + int(int_l2))[::-1]
-        result = ListNode(tmp_str[0])
-
-
-        tmp_node = None
+        result = ListNode(int(tmp_str[0]))
+        tmp_node = result
         for i in range(1, len(tmp_str)):
-            tmp_node = ListNode()
-            result
+            tmp_node.next = ListNode(int(tmp_str[i]))
+            tmp_node = tmp_node.next
 
-        list_node = ListNode(2)
-        list_node.next = ListNode(4)
-        list_node.next.next = ListNode(3)
+        return result
 
 
 if __name__ == '__main__':
@@ -48,6 +45,12 @@ if __name__ == '__main__':
     list_node.next = ListNode(4)
     list_node.next.next = ListNode(3)
 
-    list_node = ListNode(5)
-    list_node.next = ListNode(6)
-    list_node.next.next = ListNode(4)
+    list_node1 = ListNode(5)
+    list_node1.next = ListNode(6)
+    list_node1.next.next = ListNode(4)
+
+    list_node2 = Solution().addTwoNumbers(list_node, list_node1)
+    assert list_node2.val == 7
+    assert list_node2.next.val == 0
+    assert list_node2.next.next.val == 8
+
