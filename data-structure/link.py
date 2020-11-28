@@ -44,22 +44,29 @@ def hasCycle(head):
 
 
 def mergeTwoLists(l1, l2):
-    """
-    输入： l1 1->2->4  l2 1->3->4
-    输出：1->1->2->3->4->4
+    if l1 is None:
+        return l2
+    elif l2 is None:
+        return l1
+    elif l1.val < l2.val:
+        l1.next = mergeTwoLists(l1.next, l2)
+        return l1
+    else:
+        l2.next = mergeTwoLists(l1, l2.next)
+        return l2
 
-    :type l1: ListNode
-    :type l2: ListNode
+
+def removeNthFromEnd(head, n):
+    """
+    :type head: ListNode
+    :type n: int
     :rtype: ListNode
     """
-    if l1 is None:
-        return
-    if l2 is None:
-        return
-    if l1.val>l2.val:
-        # l1 1->2->4  l2 1->3->4
-
-
+    i_list = []
+    while head:
+        i_list.append(head)
+        head = head.next
+    i_list[-n - 1].next = i_list[-n + 1]
 
 
 if __name__ == '__main__':
