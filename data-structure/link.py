@@ -21,7 +21,6 @@ def reverseList(head):
     curr = head
 
     while curr != None:
-        # 2的next指到临时变量上，然后转到1上
         next_temp = curr.next
         curr.next = prev
         prev = curr
