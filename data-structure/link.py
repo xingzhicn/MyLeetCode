@@ -12,7 +12,7 @@ class ListNode():
 
 def reverseList(head):
     """
-    1-2-3
+    1-2-3 单链表反转
     :param head:
     :return:
     """
@@ -43,6 +43,9 @@ def hasCycle(head):
 
 
 def mergeTwoLists(l1, l2):
+    """
+    两个有序的链表合并
+    """
     if l1 is None:
         return l2
     elif l2 is None:
@@ -80,4 +83,7 @@ if __name__ == '__main__':
     three1 = ListNode(1, two1)
 
     tmp = reverseList(three)
-    print()
+    print(tmp)
+    tmp = hasCycle(three)
+    print(tmp)
+    mergeTwoLists(three,three1)
